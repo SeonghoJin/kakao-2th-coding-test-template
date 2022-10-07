@@ -7,7 +7,7 @@ export class ApiService {
   private readonly baseURL: string;
   private readonly defaultHeaders: {
     [consts.Authorization]: string;
-    [consts.Content_Type]: typeof consts.APPLICATION_JSON;
+    [consts.Content_Type]: string;
   };
 
   constructor({ authKey, baseURL }) {
