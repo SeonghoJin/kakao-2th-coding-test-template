@@ -2,7 +2,7 @@ import { ApiService } from "./ApiService.js";
 
 export class App {
   private readonly apiService: ApiService;
-  private readonly current = Date.now();
+
   constructor({ apiService }) {
     this.apiService = apiService;
   }
