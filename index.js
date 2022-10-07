@@ -1,7 +1,7 @@
 import { config } from "./config.js";
 import ApiService from "./ApiService.js";
 import { createAuthKey } from "./createAuthKey.js";
-import { V1 } from "./v1.js";
+import { V1 } from "./app.js";
 import { V2 } from "./v2.js";
 import { V3 } from "./v3.js";
 import { V4 } from "./v4.js";
