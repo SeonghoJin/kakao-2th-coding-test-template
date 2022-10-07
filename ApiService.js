@@ -1,7 +1,7 @@
 import fetch from "node-fetch";
 import { consts } from "./consts.js";
 
-export default class ApiService {
+export class ApiService {
   constructor({ authKey, baseURL }) {
     /**
      * @private
