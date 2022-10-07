@@ -9,7 +9,6 @@ export class App {
    */
   constructor({ apiService }) {
     this.apiService = apiService;
-    this.current = Date.now();
   }
 
   run = async () => {
@@ -20,8 +19,6 @@ export class App {
     const result = await this.apiService.match([]);
     if (result.status === "finished") {
       const score = await this.apiService.getScore();
-      const here = Date.now();
-      console.log(here - this.current);
       console.log(score);
       return;
     }
