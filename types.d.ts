@@ -1,10 +1,14 @@
-export type UserInfo = {
-    id: number;
-    grade: number;
+export type A = {
 }
 
-export type GameReuslt = {
-    win: number,
-    lose: number,
-    taken: number,
+export type B = {
+
+}
+
+export type C = {
+
+}
+
+export type D = {
+
 }

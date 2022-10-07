@@ -23,10 +23,6 @@ export default class ApiService {
   /**
    * @param {}
    * @returns {Promise<{
-   *  waiting_line: {
-   *  id: number,
-   *  from: number,
-   * }[]
    * }>}
    */
   getWaitingLine = async () => {
@@ -74,7 +70,6 @@ export default class ApiService {
    * @param {{
    * }}
    * @returns {Promise<{
-   *  user_info: import("./types.js").UserInfo[]
    * }>}
    */
   getUserInfo = async () => {
@@ -97,10 +92,9 @@ export default class ApiService {
 
   /**
    *
-   * @param {[number, number][]} pairs
+   * @param {{
+   * }}
    * @returns {Promise<{
-   *  status: string;
-   *  time: number;
    * }>}
    */
   match = async (pairs) => {
@@ -122,8 +116,10 @@ export default class ApiService {
 
   /**
    *
-   * @param {{id: number, grade: number}[]} commands
-   * @returns {Promise<{status: string}>}
+   * @param {{
+   * }}
+   * @returns {Promise<{
+   * }>}
    */
   changeGrade = async (commands) => {
     console.log(commands);
@@ -145,13 +141,9 @@ export default class ApiService {
   };
 
   /**
-   *
+   * @param {{
+   * }}
    * @returns {Promise<{
-   *  status: string;
-   *  efficiency_score: number;
-   *  accuracy_score1: number;
-   *  accuracy_score2: number;
-   *  score: number;
    * }>}
    */
   getScore = async () => {

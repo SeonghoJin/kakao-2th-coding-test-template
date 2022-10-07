@@ -18,7 +18,9 @@ export const createAuthKey = async ({ authToken, problem, baseURL }) => {
       },
       body: JSON.stringify({ problem }),
     });
-    if (!res.ok) throw new Error("서버 이상 " + res.json());
+    if (!res.ok) {
+      console.log("createAuthKey 실패", res);
+    }
     const { auth_key } = await res.json();
     return auth_key;
   } catch (e) {
