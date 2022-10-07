@@ -28,11 +28,12 @@ export class ApiService {
   getWaitingLine = async () => {
     const url = `${this.baseURL}/waiting_line`;
     const method = consts.GET;
+    const headers = this.defaultHeaders;
 
     try {
       const res = await fetch(url, {
         method,
-        headers: this.defaultHeaders,
+        headers,
       });
 
       if (!res.ok) {
@@ -55,11 +56,12 @@ export class ApiService {
   getGameResult = async () => {
     const url = `${this.baseURL}/waiting_line`;
     const method = consts.GET;
+    const headers = this.defaultHeaders;
 
     try {
       const res = await fetch(url, {
         method,
-        headers: this.defaultHeaders,
+        headers,
       });
 
       if (!res.ok) {
@@ -83,11 +85,12 @@ export class ApiService {
   getUserInfo = async () => {
     const url = `${this.baseURL}/waiting_line`;
     const method = consts.GET;
+    const headers = this.defaultHeaders;
 
     try {
       const res = await fetch(url, {
         method,
-        headers: this.defaultHeaders,
+        headers,
       });
 
       if (!res.ok) {
@@ -111,11 +114,12 @@ export class ApiService {
   match = async (pairs) => {
     const url = `${this.baseURL}/waiting_line`;
     const method = consts.PUT;
+    const headers = this.defaultHeaders;
 
     try {
       const res = await fetch(url, {
         method,
-        headers: this.defaultHeaders,
+        headers,
         body: JSON.stringify({ pairs }),
       });
 
@@ -140,11 +144,12 @@ export class ApiService {
   changeGrade = async () => {
     const url = `${this.baseURL}/waiting_line`;
     const method = consts.PUT;
+    const headers = this.defaultHeaders;
 
     try {
       const res = await fetch(url, {
         method,
-        headers: this.defaultHeaders,
+        headers,
         body: JSON.stringify({ commands }),
       });
 
@@ -168,11 +173,12 @@ export class ApiService {
   getScore = async () => {
     const url = `${this.baseURL}/waiting_line`;
     const method = consts.GET;
+    const headers = this.defaultHeaders;
 
     try {
       const res = await fetch(url, {
         method,
-        headers: this.defaultHeaders,
+        headers,
       });
 
       if (!res.ok) {
