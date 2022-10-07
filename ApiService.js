@@ -22,7 +22,8 @@ export default class ApiService {
 
   /**
    * @param {}
-   * @returns {Promise<{locations: import("./types").Location[]}>}
+   * @returns {Promise<{
+   * }>}
    */
   getLocations = async () => {
     try {
@@ -43,7 +44,8 @@ export default class ApiService {
 
   /**
    * @param {}
-   * @returns {Promise<{trucks: import("./types").Truck[]}>}
+   * @returns {Promise<{
+   * }>}
    */
   getTrucks = async () => {
     try {
@@ -65,14 +67,8 @@ export default class ApiService {
   /**
    *
    * @param {{
-   *    truck_id: number,
-   *    command: number[],
    * }} commands
    * @returns {Promise<{
-   *    status: string;
-   *    time: number;
-   *    failed_requests_count: number;
-   *    distance: number;
    * }>}
    */
   simulate = async (commands) => {
@@ -98,7 +94,6 @@ export default class ApiService {
   /**
    *
    * @returns {Promise<{
-   *    score: number
    * }>}
    */
   getScore = async () => {
