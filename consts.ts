@@ -7,4 +7,4 @@ export const consts = {
   X_AUTH_TOEKN: "X-Auth-Token",
   Content_Type: "Content-Type",
   APPLICATION_JSON: "application/json",
-};
+} as const;

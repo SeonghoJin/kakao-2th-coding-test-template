@@ -1,12 +1,8 @@
 import { ApiService } from "./ApiService.js";
 
 export class App {
-  /**
-   *
-   * @param {{
-   *  apiService: ApiService
-   * }} param
-   */
+  private readonly apiService: ApiService;
+  private readonly current = Date.now();
   constructor({ apiService }) {
     this.apiService = apiService;
   }
@@ -17,7 +13,12 @@ export class App {
     await Promise.all([]);
 
     const result = await this.apiService.match([]);
+    // @ts-ignore
+    console.log(Date.now() - this.current)
+    // @ts-ignore
     if (result.status === "finished") {
+      // @ts-ignore
+      console.log(Date.now() - this.current)
       const score = await this.apiService.getScore();
       console.log(score);
       return;
