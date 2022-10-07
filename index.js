@@ -1,7 +1,7 @@
 import { config } from "./config.js";
 import { ApiService } from "./ApiService.js";
 import { createAuthKey } from "./createAuthKey.js";
-import { App } from "./app.js";
+import { App } from "./App.js";
 
 const { baseURL, authToken, problem } = config;
 

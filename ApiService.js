@@ -50,7 +50,6 @@ export class ApiService {
   /**
    * @param {}
    * @returns {Promise<{
-   *  game_result: import("./types.js").GameReuslt[]
    * }>}
    */
   getGameResult = async () => {
@@ -112,7 +111,7 @@ export class ApiService {
    * }>}
    */
   match = async (pairs) => {
-    const url = `${this.baseURL}/waiting_line`;
+    const url = `${this.baseURL}/match`;
     const method = consts.PUT;
     const headers = this.defaultHeaders;
 

@@ -12,18 +12,23 @@ export class App {
   }
 
   run = async () => {
-    await Promise.all([]);
-    await Promise.all([]);
-    await Promise.all([]);
+    const current = Date.now();
+    while(true){
+      await Promise.all([]);
+      await Promise.all([]);
+      await Promise.all([]);
 
-    const result = await this.apiService.match(matches);
-
-    if (result.status === "finished") {
-      const score = await this.apiService.getScore();
-      console.log(score);
-      return;
+      const result = await this.apiService.match([]);
+      console.log(Date.now() - current);
+      console.log(result)
+      if (result.status === "finished") {
+        const score = await this.apiService.getScore();
+        const here = Date.now();
+        console.log(here - current);
+        console.log(score);
+        return;
+      }
     }
-
-    this.run();
   };
+
 }
