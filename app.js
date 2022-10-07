@@ -18,8 +18,6 @@ export class App {
     await Promise.all([]);
 
     const result = await this.apiService.match([]);
-    console.log(Date.now() - this.current);
-    console.log(result)
     if (result.status === "finished") {
       const score = await this.apiService.getScore();
       const here = Date.now();
