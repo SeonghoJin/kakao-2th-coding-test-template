@@ -1,6 +1,6 @@
 import ApiService from "./ApiService.js";
 
-export class V1 {
+export class App {
   /**
    *
    * @param {{
