@@ -1,10 +1,10 @@
-export type Truck = {
+export type UserInfo = {
     id: number;
-    location_id: number;
-    loaded_bikes_count: number;
+    grade: number;
 }
 
-export type Location = {
-    id: number;
-    located_bikes_count: number;
+export type GameReuslt = {
+    win: number,
+    lose: number,
+    taken: number,
 }

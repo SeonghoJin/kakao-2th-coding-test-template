@@ -12,11 +12,23 @@ export class V1 {
   }
 
   run = async () => {
-    const { status } = await this.apiService.simulate([
-      { truck_id: 0, command: [] },
-    ]);
+    const { waiting_line } = await this.apiService.getWaitingLine();
+    const { game_result } = await this.apiService.getGameResult();
 
-    if (status === "finished") {
+    console.log(waiting_line);
+    const matches = [];
+
+    for (let i = 0; i < waiting_line.length; i += 2) {
+      if (waiting_line[i] != null && waiting_line[i + 1] != null) {
+        matches.push([waiting_line[i].id, waiting_line[i + 1].id]);
+      }
+    }
+
+    console.log(matches);
+
+    const result  = await this.apiService.match(matches);
+    console.log(result);
+    if (result.status === "finished") {
       const { score } = await this.apiService.getScore();
       console.log(score);
       return;

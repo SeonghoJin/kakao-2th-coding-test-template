@@ -13,7 +13,7 @@ export const createAuthKey = async ({ authToken, problem, baseURL }) => {
         [consts.X_AUTH_TOEKN]: authToken,
         [consts.Content_Type]: consts.APPLICATION_JSON,
       },
-      params: {
+      body: {
         problem,
       },
       body: JSON.stringify({ problem }),

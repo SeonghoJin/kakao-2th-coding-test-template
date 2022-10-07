@@ -1,6 +1,5 @@
 export const config = {
-  authToken: "3474bb5ae4f12bccfddfc4f58d8812fc",
-  baseURL:
-    "https://kox947ka1a.execute-api.ap-northeast-2.amazonaws.com/prod/users",
-  problem: 1,
+  authToken: "6961a6817d34160efe7de611678bb45a",
+  baseURL: "https://huqeyhi95c.execute-api.ap-northeast-2.amazonaws.com/prod",
+  problem: 2,
 };
