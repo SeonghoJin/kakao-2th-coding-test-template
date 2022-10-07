@@ -1,4 +1,4 @@
-import ApiService from "./ApiService.js";
+import { ApiService } from "./ApiService.js";
 
 export class App {
   /**
