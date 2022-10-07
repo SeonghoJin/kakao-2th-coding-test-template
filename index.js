@@ -12,7 +12,7 @@ const key = await createAuthKey({
 });
 
 const apiService = new ApiService({ authKey: key, baseURL });
-const app = new V1({
+const app = new App({
   apiService,
 });
 
