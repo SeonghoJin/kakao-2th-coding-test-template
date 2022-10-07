@@ -102,7 +102,9 @@ export class ApiService {
       }
 
       const json = await res.json();
-      return json;
+      return json as {
+        status: string;
+      };
     } catch (e) {
       console.log(e, "match");
     }
@@ -147,7 +149,9 @@ export class ApiService {
       }
 
       const json = await res.json();
-      return json;
+      return json as {
+        status: string;
+      };
     } catch (e) {
       console.log(e, "get score fail");
     }
