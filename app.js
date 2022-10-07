@@ -19,7 +19,7 @@ export class App {
     const result = await this.apiService.match(matches);
 
     if (result.status === "finished") {
-      const { score } = await this.apiService.getScore();
+      const score = await this.apiService.getScore();
       console.log(score);
       return;
     }
