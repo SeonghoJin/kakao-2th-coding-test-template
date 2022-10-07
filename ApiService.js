@@ -26,7 +26,7 @@ export class ApiService {
    * }>}
    */
   getWaitingLine = async () => {
-    const url = `${this.baseURL}/waiting_line`;
+    const url = `${this.baseURL}/`;
     const method = consts.GET;
     const headers = this.defaultHeaders;
 
@@ -53,7 +53,7 @@ export class ApiService {
    * }>}
    */
   getGameResult = async () => {
-    const url = `${this.baseURL}/waiting_line`;
+    const url = `${this.baseURL}/`;
     const method = consts.GET;
     const headers = this.defaultHeaders;
 
@@ -82,7 +82,7 @@ export class ApiService {
    * }>}
    */
   getUserInfo = async () => {
-    const url = `${this.baseURL}/waiting_line`;
+    const url = `${this.baseURL}/`;
     const method = consts.GET;
     const headers = this.defaultHeaders;
 
@@ -111,7 +111,7 @@ export class ApiService {
    * }>}
    */
   match = async (pairs) => {
-    const url = `${this.baseURL}/match`;
+    const url = `${this.baseURL}/`;
     const method = consts.PUT;
     const headers = this.defaultHeaders;
 
@@ -141,7 +141,7 @@ export class ApiService {
    * }>}
    */
   changeGrade = async () => {
-    const url = `${this.baseURL}/waiting_line`;
+    const url = `${this.baseURL}/`;
     const method = consts.PUT;
     const headers = this.defaultHeaders;
 
@@ -159,7 +159,7 @@ export class ApiService {
       const json = await res.json();
       return json;
     } catch (e) {
-      throw new Error(e, "change grade fail");
+      console.log("fail", e);
     }
   };
 
@@ -170,7 +170,7 @@ export class ApiService {
    * }>}
    */
   getScore = async () => {
-    const url = `${this.baseURL}/waiting_line`;
+    const url = `${this.baseURL}/score`;
     const method = consts.GET;
     const headers = this.defaultHeaders;
 
