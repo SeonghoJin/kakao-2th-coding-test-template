@@ -35,8 +35,8 @@ export default class ApiService {
       if (!res.ok) {
         throw new Error("server error");
       }
-
-      return await res.json();
+      const json = await res.json();
+      return json;
     } catch (e) {
       throw new Error("get locations fail", e);
     }
@@ -57,8 +57,8 @@ export default class ApiService {
       if (!res.ok) {
         throw new Error("server error");
       }
-
-      return await res.json();
+      const json = await res.json();
+      return json;
     } catch (e) {
       throw new Error("get locations fail", e);
     }
@@ -67,16 +67,15 @@ export default class ApiService {
   /**
    *
    * @param {{
-   * }} commands
+   * }}
    * @returns {Promise<{
    * }>}
    */
-  simulate = async (commands) => {
+  simulate = async () => {
     try {
       const res = await fetch(`${this.baseURL}/simulate`, {
         method: consts.PUT,
         headers: this.defaultHeaders,
-        body: JSON.stringify({ commands }),
       });
 
       if (!res.ok) {
@@ -84,7 +83,6 @@ export default class ApiService {
       }
 
       const json = await res.json();
-      console.log(json);
       return json;
     } catch (e) {
       throw new Error("simulate fail", e);
@@ -106,8 +104,8 @@ export default class ApiService {
       if (!res.ok) {
         throw new Error("server error");
       }
-
-      return await res.json();
+      const json = await res.json();
+      return json;
     } catch (e) {
       throw new Error("simulate fail", e);
     }
