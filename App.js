@@ -15,7 +15,10 @@ export class App {
     this.MAX_DAY = 201;
     this.day = 0;
     for (let i = 1; i <= this.MAX_DAY; i++) {
-      this.hotels[i] = [[], [], [], []];
+      this.hotels[i] = [];
+      for(let j = 0; j <= this.H; j++){
+        this.hotels[i][j] = [];
+      }
       for (let j = 1; j <= this.H; j++) {
         for (let k = 1; k <= this.W; k++) {
           this.hotels[i][j][k] = false;
@@ -28,7 +31,7 @@ export class App {
      * @type {import("./types").ReservationsInfo[][]}
      */
     this.checkIns = [];
-    for (let i = 1; i <= 201; i++) {
+    for (let i = 1; i <= this.MAX_DAY; i++) {
       this.checkIns[i] = [];
     }
   }
@@ -78,15 +81,7 @@ export class App {
 
       console.log(reserDay, checkInDiffDate, delayedDay, wait);
 
-      if(checkInDiffDate <= 2){
-        return true;
-      }
-
-      if(delayedDay >= 7){
-        return true;
-      }
-
-      return false;
+      return delayedDay >= 10;
     });
 
     console.log(rejects);
@@ -118,7 +113,7 @@ export class App {
     const result = await this.apiService.simulate(assignes);
     console.log(result);
 
-    if (result.day === 201) {
+    if (result.day === this.MAX_DAY) {
       const score = await this.apiService.getScore();
       console.log(score);
       return;
