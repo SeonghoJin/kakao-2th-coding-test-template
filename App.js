@@ -47,7 +47,7 @@ export class App {
     })
 
     reservations_info.sort((a, b) => {
-      return Number(a.check_in_date) - Number(b.check_in_date)
+      return Number(b.amount) - Number(a.amount)
     });
 
     const replies = this.makeReplies(reservations_info);
@@ -57,9 +57,8 @@ export class App {
 
     const rejects = waits.filter((wait) => {
       const reserDay = this.reservationsMap[wait.id];
-      const checkInDiffDate = wait.check_in_date - this.day;
       const delayedDay = this.day - reserDay;
-      return delayedDay >= 4;
+      return delayedDay >= 14;
     });
 
     const accepted = replies.filter((reply) => reply.reply === 'accepted');
