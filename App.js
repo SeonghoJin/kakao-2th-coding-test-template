@@ -22,6 +22,7 @@ export class App {
         }
       }
     }
+    this.reservationsMap = {};
     /**
      *
      * @type {import("./types").ReservationsInfo[][]}
@@ -36,36 +37,76 @@ export class App {
     this.day++;
     const {reservations_info} = await this.apiService.getNewRequests();
 
+    reservations_info.forEach((reservation) => {
+      if(this.reservationsMap[reservation.id] === undefined){
+        this.reservationsMap[reservation.id] = this.day;
+      }
+    })
+
     reservations_info.sort((a, b) => {
       return Number(a.check_in_date) - Number(b.check_in_date)
     });
 
+    console.log(reservations_info);
+
     /**
-     * @type {(import("./types").ReservationsInfo & {reply: string})[]}
+     * @type {(import("./types").ReservationsInfo & {reply: string; day: number})[]}
      */
-    const replies = reservations_info.filter((reservation) => {
+    const replies = reservations_info.map((reservation) => {
       const room = this.canApply(reservation);
       if (room === null) {
-        return false;
+        return {
+          ...reservation,
+          reply: 'refused',
+        }
       }
       reservation.room = room;
       this.accept(reservation, room);
-      return true;
-    }).map((item) => {
-      this.checkIns[item.check_in_date].push(item);
+      this.checkIns[reservation.check_in_date].push(reservation);
       return {
-        ...item,
-        reply: 'accepted'
-      }
+        ...reservation,
+        reply: 'accepted',
+      };
     });
 
+    const waits = replies.filter((wait) => wait.reply === 'refused');
 
-    const {day} = await this.apiService.reply(replies.map((reply) => {
+    const rejects = waits.filter((wait) => {
+      const reserDay = this.reservationsMap[wait.id];
+      const checkInDiffDate = wait.check_in_date - this.day;
+      const delayedDay = this.day - reserDay;
+
+      console.log(reserDay, checkInDiffDate, delayedDay, wait);
+
+      if(checkInDiffDate <= 2){
+        return true;
+      }
+
+      if(delayedDay >= 7){
+        return true;
+      }
+
+      return false;
+    });
+
+    console.log(rejects);
+
+
+    const accepted = replies.filter((reply) => reply.reply === 'accepted');
+
+    const rejectsAndAcceptes = accepted.map((reply) => {
       return {
         id: reply.id,
         reply: reply.reply
       }
+    }).concat(rejects.map((reject) => {
+      return {
+        id: reject.id,
+        reply: reject.reply
+      }
     }));
+
+    const {day} = await this.apiService.reply(rejectsAndAcceptes);
 
     const assignes = this.checkIns[day].map((reply) => {
       return {
@@ -75,6 +116,7 @@ export class App {
     });
 
     const result = await this.apiService.simulate(assignes);
+    console.log(result);
 
     if (result.day === 201) {
       const score = await this.apiService.getScore();
