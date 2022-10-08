@@ -21,7 +21,9 @@ export class ApiService {
   }
 
   /**
-   * @param {}
+   * @param {{
+   *
+   * }}
    * @returns {Promise<{
    * }>}
    */
@@ -48,7 +50,9 @@ export class ApiService {
   };
 
   /**
-   * @param {}
+   * @param {{
+   *
+   * }}
    * @returns {Promise<{
    * }>}
    */
@@ -77,6 +81,7 @@ export class ApiService {
   /**
    *
    * @param {{
+   *
    * }}
    * @returns {Promise<{
    * }>}
@@ -106,6 +111,7 @@ export class ApiService {
   /**
    *
    * @param {{
+   *
    * }}
    * @returns {Promise<{
    * }>}
@@ -136,6 +142,7 @@ export class ApiService {
   /**
    *
    * @param {{
+   *
    * }}
    * @returns {Promise<{
    * }>}
@@ -165,6 +172,7 @@ export class ApiService {
 
   /**
    * @param {{
+   *
    * }}
    * @returns {Promise<{
    * }>}
