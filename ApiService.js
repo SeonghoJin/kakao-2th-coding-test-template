@@ -21,14 +21,12 @@ export class ApiService {
   }
 
   /**
-   * @param {{
-   *
-   * }}
    * @returns {Promise<{
+   *  reservations_info: import("./types").ReservationsInfo[]
    * }>}
    */
-  getWaitingLine = async () => {
-    const url = `${this.baseURL}/`;
+  getNewRequests = async () => {
+    const url = `${this.baseURL}/new_requests`;
     const method = consts.GET;
     const headers = this.defaultHeaders;
 
@@ -50,21 +48,23 @@ export class ApiService {
   };
 
   /**
-   * @param {{
-   *
-   * }}
+   * @param {
+   *   import("./types").ReplyRequest[]
+   * } replies
    * @returns {Promise<{
+   *  day: number
    * }>}
    */
-  getGameResult = async () => {
-    const url = `${this.baseURL}/`;
-    const method = consts.GET;
+  reply = async (replies) => {
+    const url = `${this.baseURL}/reply`;
+    const method = consts.PUT;
     const headers = this.defaultHeaders;
 
     try {
       const res = await fetch(url, {
         method,
         headers,
+        body: JSON.stringify({replies}),
       });
 
       if (!res.ok) {
@@ -80,21 +80,24 @@ export class ApiService {
 
   /**
    *
-   * @param {{
-   *
-   * }}
+   * @param {
+   *     import('./types').RoomAssignRequest[]
+   * } room_assign
    * @returns {Promise<{
+   *  day: number;
+   *  fail_count: number;
    * }>}
    */
-  getUserInfo = async () => {
-    const url = `${this.baseURL}/`;
-    const method = consts.GET;
+  simulate = async (room_assign) => {
+    const url = `${this.baseURL}/simulate`;
+    const method = consts.PUT;
     const headers = this.defaultHeaders;
 
     try {
       const res = await fetch(url, {
         method,
         headers,
+        body: JSON.stringify({room_assign})
       });
 
       if (!res.ok) {
@@ -108,75 +111,7 @@ export class ApiService {
     }
   };
 
-  /**
-   *
-   * @param {{
-   *
-   * }}
-   * @returns {Promise<{
-   * }>}
-   */
-  match = async (pairs) => {
-    const url = `${this.baseURL}/`;
-    const method = consts.PUT;
-    const headers = this.defaultHeaders;
 
-    try {
-      const res = await fetch(url, {
-        method,
-        headers,
-        body: JSON.stringify({ pairs }),
-      });
-
-      if (!res.ok) {
-        console.log("server error", res.status, res.statusText);
-      }
-
-      const json = await res.json();
-      return json;
-    } catch (e) {
-      console.log(e, "match");
-    }
-  };
-
-  /**
-   *
-   * @param {{
-   *
-   * }}
-   * @returns {Promise<{
-   * }>}
-   */
-  changeGrade = async () => {
-    const url = `${this.baseURL}/`;
-    const method = consts.PUT;
-    const headers = this.defaultHeaders;
-
-    try {
-      const res = await fetch(url, {
-        method,
-        headers,
-        body: JSON.stringify({ commands }),
-      });
-
-      if (!res.ok) {
-        console.log("server error", res.status, res.statusText);
-      }
-
-      const json = await res.json();
-      return json;
-    } catch (e) {
-      console.log("fail", e);
-    }
-  };
-
-  /**
-   * @param {{
-   *
-   * }}
-   * @returns {Promise<{
-   * }>}
-   */
   getScore = async () => {
     const url = `${this.baseURL}/score`;
     const method = consts.GET;
