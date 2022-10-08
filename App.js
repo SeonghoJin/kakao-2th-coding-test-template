@@ -50,8 +50,6 @@ export class App {
       return Number(a.check_in_date) - Number(b.check_in_date)
     });
 
-    console.log(reservations_info);
-
     const replies = this.makeReplies(reservations_info);
 
 
@@ -61,14 +59,8 @@ export class App {
       const reserDay = this.reservationsMap[wait.id];
       const checkInDiffDate = wait.check_in_date - this.day;
       const delayedDay = this.day - reserDay;
-
-      console.log(reserDay, checkInDiffDate, delayedDay, wait);
-
       return delayedDay >= 4;
     });
-
-    console.log(rejects);
-
 
     const accepted = replies.filter((reply) => reply.reply === 'accepted');
 

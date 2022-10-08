@@ -3,6 +3,7 @@ export type ReservationsInfo = {
     amount: number;
     check_in_date: number;
     check_out_date: number;
+    room: [number, number];
 }
 
 export type ReplyRequest = {
