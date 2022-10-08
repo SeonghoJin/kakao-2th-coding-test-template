@@ -12,9 +12,9 @@ export class App {
   }
 
   run = async () => {
-    await Promise.all([]);
-    await Promise.all([]);
-    await Promise.all([]);
+    // await Promise.all([]);
+    // await Promise.all([]);
+    // await Promise.all([]);
 
     const result = await this.apiService.match([]);
     if (result.status === "finished") {
