@@ -52,25 +52,8 @@ export class App {
 
     console.log(reservations_info);
 
-    /**
-     * @type {(import("./types").ReservationsInfo & {reply: string; day: number})[]}
-     */
-    const replies = reservations_info.map((reservation) => {
-      const room = this.canApply(reservation);
-      if (room === null) {
-        return {
-          ...reservation,
-          reply: 'refused',
-        }
-      }
-      reservation.room = room;
-      this.accept(reservation, room);
-      this.checkIns[reservation.check_in_date].push(reservation);
-      return {
-        ...reservation,
-        reply: 'accepted',
-      };
-    });
+    const replies = this.makeReplies(reservations_info);
+
 
     const waits = replies.filter((wait) => wait.reply === 'refused');
 
@@ -81,7 +64,7 @@ export class App {
 
       console.log(reserDay, checkInDiffDate, delayedDay, wait);
 
-      return delayedDay >= 10;
+      return delayedDay >= 4;
     });
 
     console.log(rejects);
@@ -121,6 +104,33 @@ export class App {
 
     this.run();
   };
+
+
+  /**
+   *
+   * @param {import("./types").ReservationsInfo[]} reservations_info
+   * @return {(import("./types").ReservationsInfo & {reply: string; day: number})[]}
+   */
+  makeReplies = (reservations_info) => {
+
+    const replies = reservations_info.map((reservation) => {
+      const room = this.canApply(reservation);
+      if (room === null) {
+        return {
+          ...reservation,
+          reply: 'refused',
+        }
+      }
+      reservation.room = room;
+      this.accept(reservation, room);
+      this.checkIns[reservation.check_in_date].push(reservation);
+      return {
+        ...reservation,
+        reply: 'accepted',
+      };
+    });
+    return replies;
+  }
 
   /**
    * @param {(import("./types").ReservationsInfo)} reply;
