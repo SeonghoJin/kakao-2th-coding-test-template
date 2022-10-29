@@ -16,14 +16,15 @@ export class App {
     // await Promise.all([]);
     // await Promise.all([]);
 
-    const result = await this.apiService.match([]);
-    if (result.status === "finished") {
-      const score = await this.apiService.getScore();
-      console.log(score);
-      return;
-    }
+    while(true){
+      const result = await this.apiService.match([]);
 
-    this.run();
+      if (result.status === "finished") {
+        const score = await this.apiService.getScore();
+        console.log(score);
+        return;
+      }
+    }
   };
 
 }
