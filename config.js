@@ -6,7 +6,7 @@
  * }}
  */
 export const config = {
-  authToken: "d810411b51d8bbc29f28d91420f8e97d",
-  baseURL: "https://68ecj67379.execute-api.ap-northeast-2.amazonaws.com/api",
+  authToken: "",
+  baseURL: "",
   problem: 1,
 };
