@@ -12,3 +12,7 @@ export type C = {
 export type D = {
 
 }
+
+export type E = {
+
+}

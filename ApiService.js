@@ -1,7 +1,7 @@
 import fetch from "node-fetch";
 import { consts } from "./consts.js";
 
-export default class ApiService {
+export class ApiService {
   constructor({ authKey, baseURL }) {
     /**
      * @private
@@ -21,20 +21,27 @@ export default class ApiService {
   }
 
   /**
-   * @param {}
+   * @param {{
+   *
+   * }}
    * @returns {Promise<{
    * }>}
    */
   getWaitingLine = async () => {
+    const url = `${this.baseURL}/`;
+    const method = consts.GET;
+    const headers = this.defaultHeaders;
+
     try {
-      const res = await fetch(`${this.baseURL}/waiting_line`, {
-        method: consts.GET,
-        headers: this.defaultHeaders,
+      const res = await fetch(url, {
+        method,
+        headers,
       });
 
       if (!res.ok) {
-        console.log('get waiting line fail', res);
+        console.log("server error", res.status, res.statusText);
       }
+
       const json = await res.json();
       return json;
     } catch (e) {
@@ -43,21 +50,27 @@ export default class ApiService {
   };
 
   /**
-   * @param {}
+   * @param {{
+   *
+   * }}
    * @returns {Promise<{
-   *  game_result: import("./types.js").GameReuslt[]
    * }>}
    */
   getGameResult = async () => {
+    const url = `${this.baseURL}/`;
+    const method = consts.GET;
+    const headers = this.defaultHeaders;
+
     try {
-      const res = await fetch(`${this.baseURL}/game_result`, {
-        method: consts.GET,
-        headers: this.defaultHeaders,
+      const res = await fetch(url, {
+        method,
+        headers,
       });
 
       if (!res.ok) {
-        console.log('get waiting line fail', res);
+        console.log("server error", res.status, res.statusText);
       }
+
       const json = await res.json();
       return json;
     } catch (e) {
@@ -68,19 +81,24 @@ export default class ApiService {
   /**
    *
    * @param {{
+   *
    * }}
    * @returns {Promise<{
    * }>}
    */
   getUserInfo = async () => {
+    const url = `${this.baseURL}/`;
+    const method = consts.GET;
+    const headers = this.defaultHeaders;
+
     try {
-      const res = await fetch(`${this.baseURL}/user_info`, {
-        method: consts.GET,
-        headers: this.defaultHeaders,
+      const res = await fetch(url, {
+        method,
+        headers,
       });
 
       if (!res.ok) {
-        console.log("get user info error", e);
+        console.log("server error", res.status, res.statusText);
       }
 
       const json = await res.json();
@@ -93,20 +111,27 @@ export default class ApiService {
   /**
    *
    * @param {{
+   *
    * }}
    * @returns {Promise<{
    * }>}
    */
   match = async (pairs) => {
+    const url = `${this.baseURL}/`;
+    const method = consts.PUT;
+    const headers = this.defaultHeaders;
+
     try {
-      const res = await fetch(`${this.baseURL}/match`, {
-        method: consts.PUT,
-        headers: this.defaultHeaders,
+      const res = await fetch(url, {
+        method,
+        headers,
         body: JSON.stringify({ pairs }),
       });
+
       if (!res.ok) {
-        console.log("server error", res);
+        console.log("server error", res.status, res.statusText);
       }
+
       const json = await res.json();
       return json;
     } catch (e) {
@@ -117,45 +142,56 @@ export default class ApiService {
   /**
    *
    * @param {{
+   *
    * }}
    * @returns {Promise<{
    * }>}
    */
-  changeGrade = async (commands) => {
-    console.log(commands);
+  changeGrade = async () => {
+    const url = `${this.baseURL}/`;
+    const method = consts.PUT;
+    const headers = this.defaultHeaders;
+
     try {
-      const res = await fetch(`${this.baseURL}/change_grade`, {
-        method: consts.PUT,
-        headers: this.defaultHeaders,
+      const res = await fetch(url, {
+        method,
+        headers,
         body: JSON.stringify({ commands }),
       });
 
       if (!res.ok) {
-        console.log(res);
+        console.log("server error", res.status, res.statusText);
       }
+
       const json = await res.json();
       return json;
     } catch (e) {
-      throw new Error(e, "change grade fail");
+      console.log("fail", e);
     }
   };
 
   /**
    * @param {{
+   *
    * }}
    * @returns {Promise<{
    * }>}
    */
   getScore = async () => {
+    const url = `${this.baseURL}/score`;
+    const method = consts.GET;
+    const headers = this.defaultHeaders;
+
     try {
-      const res = await fetch(`${this.baseURL}/score`, {
-        method: consts.GET,
-        headers: this.defaultHeaders,
+      const res = await fetch(url, {
+        method,
+        headers,
       });
 
       if (!res.ok) {
-        throw new Error("server error");
+        console.log("server error", res.status, res.statusText);
       }
+
       const json = await res.json();
       return json;
     } catch (e) {
