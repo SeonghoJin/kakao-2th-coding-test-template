@@ -9,7 +9,6 @@
 ### javascript 템플릿
 - 아무런 설정없이 타입추론을 이용할 수 있도록 jsdoc 사용.
 - types.d.ts에 타입 선언하고 import해서 사용했습니다. (declare 사용해서 import 없이 사용하는게 더 편한데, 생각을 못했습니다..)
-- while, recursion에 따라 입맛에 맞게 사용 가능..?
 
 
 ### typescript 템플릿
