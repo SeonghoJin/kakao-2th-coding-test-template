@@ -5,7 +5,6 @@ import { App } from "./app.js";
 
 const { baseURL, authToken, problem } = config;
 
-// @ts-ignore
 const key = await createAuthKey({
   problem,
   authToken,
