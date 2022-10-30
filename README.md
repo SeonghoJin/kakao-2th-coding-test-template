@@ -7,8 +7,8 @@
 - kakao-2023-test: 실제 코딩테스트 때 풀이했던 코드
 
 ### javascript 템플릿
-아무런 설정 없이 타입 추론을 이용할 수 있도록 jsdoc을 사용했습니다.
-types.d.ts에 타입 선언하고 import 해서 사용했습니다. (declare 사용해서 import 없이 사용하는 게 더 편한데, 생각을 못 했습니다...)
+아무런 설정 없이 타입 추론을 이용할 수 있도록 jsdoc과 
+타입은 types.d.ts에 선언하고 import 해서 사용했습니다. (declare 사용해서 import 없이 사용하는 게 더 편한데, 생각을 못 했습니다...)
 
 
 ### typescript 템플릿
